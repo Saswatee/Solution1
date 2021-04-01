@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2174249a4a4f4560a19f0a07668d806e" Name="Diagram1" ZoomLevel="187">
+        <EntityTypeShape EntityType="projectNGOModel.AddressType" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="projectNGOModel.City" Width="1.5" PointX="6" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="projectNGOModel.Country" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="projectNGOModel.DonationType" Width="1.5" PointX="3" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="projectNGOModel.NGO" Width="1.5" PointX="3" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="projectNGOModel.NGOAddress" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="projectNGOModel.NGODonationAcceptance" Width="1.5" PointX="8.25" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="projectNGOModel.NGOOperationalType" Width="1.5" PointX="3" PointY="27.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="projectNGOModel.Role" Width="1.5" PointX="3" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="projectNGOModel.State" Width="1.5" PointX="8.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="projectNGOModel.User" Width="1.5" PointX="0.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="projectNGOModel.UserDetail" Width="1.5" PointX="13.5" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="projectNGOModel.UserDonation" Width="1.5" PointX="11.25" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="projectNGOModel.UserRole" Width="1.5" PointX="8.25" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="projectNGOModel.NGOOperation" Width="1.5" PointX="5.25" PointY="25.625" IsExpanded="true" />
+        <AssociationConnector Association="projectNGOModel.FK_AddressType_User" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_AddressType_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGOAddress_AddressType" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_City_State" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_City_User" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_City_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_City_User2" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGOAddress_City" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_UserDetails_City" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_Country_User" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_Country_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_State_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_DonationType_User" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_DonationType_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGODonationAcceptance_DonationType" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_UserDonation_DonationType" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGO_User" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGO_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGOAddress_NGO" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGODonationAcceptance_NGO" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGOOperations_NGO" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_UserDonation_NGO" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGOAddress_User" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGOAddress_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGODonationAcceptance_User" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGODonationAcceptance_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGOOperationalType_User" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGOOperationalType_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGOOperations_NGOOperationalType" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_Role_User" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_Role_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_UserRole_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_State_User" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_State_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_UserDetails_State" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGOOperations_User" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_NGOOperations_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_UserDetails_User" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_UserDetails_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_UserDetails_User2" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_UserDetails_User3" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_UserDonation_User" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_UserDonation_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_UserDonation_User2" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_UserRole_User" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_UserRole_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="projectNGOModel.FK_UserRole_User2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,2265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="projectNGOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="AddressTypeId" />
+          </Key>
+          <Property Name="AddressTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddressType" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdateeBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="10" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DonationType">
+          <Key>
+            <PropertyRef Name="DonationTypeId" />
+          </Key>
+          <Property Name="DonationTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NGO">
+          <Key>
+            <PropertyRef Name="NGOId" />
+          </Key>
+          <Property Name="NGOId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NGOName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NGOAddress">
+          <Key>
+            <PropertyRef Name="NGOAddressId" />
+          </Key>
+          <Property Name="NGOAddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NGOId" Type="int" />
+          <Property Name="AddressTypeId" Type="int" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="100" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="Contact" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NGODonationAcceptance">
+          <Key>
+            <PropertyRef Name="NGODonationAcceptanceId" />
+          </Key>
+          <Property Name="NGODonationAcceptanceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NGOId" Type="int" />
+          <Property Name="DatonationTypeId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NGOOperationalType">
+          <Key>
+            <PropertyRef Name="NGOOperationalTypeId" />
+          </Key>
+          <Property Name="NGOOperationalTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OperationType" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'projectNGO.dbo.NGOOperations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="NGOOperations">
+          <Key>
+            <PropertyRef Name="NGOOperationsId" />
+          </Key>
+          <Property Name="NGOOperationsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NGOId" Type="int" />
+          <Property Name="NGOOperationalId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountyId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="PhoneNumber" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nchar" MaxLength="10" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserDetails">
+          <Key>
+            <PropertyRef Name="UserDetailsId" />
+          </Key>
+          <Property Name="UserDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="100" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserDonation">
+          <Key>
+            <PropertyRef Name="UserDonationId" />
+          </Key>
+          <Property Name="UserDonationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="NGOId" Type="int" />
+          <Property Name="DonationTypeId" Type="int" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="DateOfDonation" Type="date" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_AddressType_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="AddressType">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AddressType_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="AddressType">
+              <PropertyRef Name="UpdateeBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_User2">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Country" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Country">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Country" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Country">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DonationType_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="DonationType" Type="Self.DonationType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="DonationType">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DonationType_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="DonationType" Type="Self.DonationType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="DonationType">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGO_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGO" Type="Self.NGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGO">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGO_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGO" Type="Self.NGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGO">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOAddress_AddressType">
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="0..1" />
+          <End Role="NGOAddress" Type="Self.NGOAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressType">
+              <PropertyRef Name="AddressTypeId" />
+            </Principal>
+            <Dependent Role="NGOAddress">
+              <PropertyRef Name="AddressTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOAddress_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="NGOAddress" Type="Self.NGOAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="NGOAddress">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOAddress_NGO">
+          <End Role="NGO" Type="Self.NGO" Multiplicity="0..1" />
+          <End Role="NGOAddress" Type="Self.NGOAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGO">
+              <PropertyRef Name="NGOId" />
+            </Principal>
+            <Dependent Role="NGOAddress">
+              <PropertyRef Name="NGOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOAddress_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGOAddress" Type="Self.NGOAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGOAddress">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOAddress_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGOAddress" Type="Self.NGOAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGOAddress">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGODonationAcceptance_DonationType">
+          <End Role="DonationType" Type="Self.DonationType" Multiplicity="0..1" />
+          <End Role="NGODonationAcceptance" Type="Self.NGODonationAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonationType">
+              <PropertyRef Name="DonationTypeId" />
+            </Principal>
+            <Dependent Role="NGODonationAcceptance">
+              <PropertyRef Name="DatonationTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGODonationAcceptance_NGO">
+          <End Role="NGO" Type="Self.NGO" Multiplicity="0..1" />
+          <End Role="NGODonationAcceptance" Type="Self.NGODonationAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGO">
+              <PropertyRef Name="NGOId" />
+            </Principal>
+            <Dependent Role="NGODonationAcceptance">
+              <PropertyRef Name="NGOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGODonationAcceptance_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGODonationAcceptance" Type="Self.NGODonationAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGODonationAcceptance">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGODonationAcceptance_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGODonationAcceptance" Type="Self.NGODonationAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGODonationAcceptance">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOOperationalType_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGOOperationalType" Type="Self.NGOOperationalType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGOOperationalType">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOOperationalType_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGOOperationalType" Type="Self.NGOOperationalType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGOOperationalType">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOOperations_NGO">
+          <End Role="NGO" Type="Self.NGO" Multiplicity="0..1" />
+          <End Role="NGOOperations" Type="Self.NGOOperations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGO">
+              <PropertyRef Name="NGOId" />
+            </Principal>
+            <Dependent Role="NGOOperations">
+              <PropertyRef Name="NGOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOOperations_NGOOperationalType">
+          <End Role="NGOOperationalType" Type="Self.NGOOperationalType" Multiplicity="0..1" />
+          <End Role="NGOOperations" Type="Self.NGOOperations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGOOperationalType">
+              <PropertyRef Name="NGOOperationalTypeId" />
+            </Principal>
+            <Dependent Role="NGOOperations">
+              <PropertyRef Name="NGOOperationalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOOperations_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGOOperations" Type="Self.NGOOperations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGOOperations">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOOperations_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGOOperations" Type="Self.NGOOperations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGOOperations">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CountyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_User2">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_User3">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDonation_DonationType">
+          <End Role="DonationType" Type="Self.DonationType" Multiplicity="0..1" />
+          <End Role="UserDonation" Type="Self.UserDonation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonationType">
+              <PropertyRef Name="DonationTypeId" />
+            </Principal>
+            <Dependent Role="UserDonation">
+              <PropertyRef Name="DonationTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDonation_NGO">
+          <End Role="NGO" Type="Self.NGO" Multiplicity="0..1" />
+          <End Role="UserDonation" Type="Self.UserDonation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGO">
+              <PropertyRef Name="NGOId" />
+            </Principal>
+            <Dependent Role="UserDonation">
+              <PropertyRef Name="NGOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDonation_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserDonation" Type="Self.UserDonation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDonation">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDonation_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserDonation" Type="Self.UserDonation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDonation">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDonation_User2">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserDonation" Type="Self.UserDonation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDonation">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_User2">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="projectNGOModelStoreContainer">
+          <EntitySet Name="AddressType" EntityType="Self.AddressType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DonationType" EntityType="Self.DonationType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGO" EntityType="Self.NGO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGOAddress" EntityType="Self.NGOAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGODonationAcceptance" EntityType="Self.NGODonationAcceptance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGOOperationalType" EntityType="Self.NGOOperationalType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDonation" EntityType="Self.UserDonation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGOOperations" EntityType="Self.NGOOperations" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [NGOOperations].[NGOOperationsId] AS [NGOOperationsId], 
+    [NGOOperations].[NGOId] AS [NGOId], 
+    [NGOOperations].[NGOOperationalId] AS [NGOOperationalId], 
+    [NGOOperations].[CreatedBy] AS [CreatedBy], 
+    [NGOOperations].[CreatedOn] AS [CreatedOn], 
+    [NGOOperations].[UpdatedBy] AS [UpdatedBy], 
+    [NGOOperations].[UpdatedOn] AS [UpdatedOn]
+    FROM [dbo].[NGOOperations] AS [NGOOperations]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AddressType_User" Association="Self.FK_AddressType_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="AddressType" EntitySet="AddressType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AddressType_User1" Association="Self.FK_AddressType_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="AddressType" EntitySet="AddressType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_User" Association="Self.FK_City_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_User1" Association="Self.FK_City_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_User2" Association="Self.FK_City_User2">
+            <End Role="User" EntitySet="User" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country_User" Association="Self.FK_Country_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Country" EntitySet="Country" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country_User1" Association="Self.FK_Country_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Country" EntitySet="Country" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DonationType_User" Association="Self.FK_DonationType_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="DonationType" EntitySet="DonationType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DonationType_User1" Association="Self.FK_DonationType_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="DonationType" EntitySet="DonationType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGO_User" Association="Self.FK_NGO_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="NGO" EntitySet="NGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGO_User1" Association="Self.FK_NGO_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="NGO" EntitySet="NGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOAddress_AddressType" Association="Self.FK_NGOAddress_AddressType">
+            <End Role="AddressType" EntitySet="AddressType" />
+            <End Role="NGOAddress" EntitySet="NGOAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOAddress_City" Association="Self.FK_NGOAddress_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="NGOAddress" EntitySet="NGOAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOAddress_NGO" Association="Self.FK_NGOAddress_NGO">
+            <End Role="NGO" EntitySet="NGO" />
+            <End Role="NGOAddress" EntitySet="NGOAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOAddress_User" Association="Self.FK_NGOAddress_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="NGOAddress" EntitySet="NGOAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOAddress_User1" Association="Self.FK_NGOAddress_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="NGOAddress" EntitySet="NGOAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGODonationAcceptance_DonationType" Association="Self.FK_NGODonationAcceptance_DonationType">
+            <End Role="DonationType" EntitySet="DonationType" />
+            <End Role="NGODonationAcceptance" EntitySet="NGODonationAcceptance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGODonationAcceptance_NGO" Association="Self.FK_NGODonationAcceptance_NGO">
+            <End Role="NGO" EntitySet="NGO" />
+            <End Role="NGODonationAcceptance" EntitySet="NGODonationAcceptance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGODonationAcceptance_User" Association="Self.FK_NGODonationAcceptance_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="NGODonationAcceptance" EntitySet="NGODonationAcceptance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGODonationAcceptance_User1" Association="Self.FK_NGODonationAcceptance_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="NGODonationAcceptance" EntitySet="NGODonationAcceptance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOOperationalType_User" Association="Self.FK_NGOOperationalType_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="NGOOperationalType" EntitySet="NGOOperationalType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOOperationalType_User1" Association="Self.FK_NGOOperationalType_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="NGOOperationalType" EntitySet="NGOOperationalType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOOperations_NGO" Association="Self.FK_NGOOperations_NGO">
+            <End Role="NGO" EntitySet="NGO" />
+            <End Role="NGOOperations" EntitySet="NGOOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOOperations_NGOOperationalType" Association="Self.FK_NGOOperations_NGOOperationalType">
+            <End Role="NGOOperationalType" EntitySet="NGOOperationalType" />
+            <End Role="NGOOperations" EntitySet="NGOOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOOperations_User" Association="Self.FK_NGOOperations_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="NGOOperations" EntitySet="NGOOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOOperations_User1" Association="Self.FK_NGOOperations_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="NGOOperations" EntitySet="NGOOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_User" Association="Self.FK_Role_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_User1" Association="Self.FK_Role_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_Country" Association="Self.FK_State_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_User" Association="Self.FK_State_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_User1" Association="Self.FK_State_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_City" Association="Self.FK_UserDetails_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_State" Association="Self.FK_UserDetails_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_User" Association="Self.FK_UserDetails_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_User1" Association="Self.FK_UserDetails_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_User2" Association="Self.FK_UserDetails_User2">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_User3" Association="Self.FK_UserDetails_User3">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDonation_DonationType" Association="Self.FK_UserDonation_DonationType">
+            <End Role="DonationType" EntitySet="DonationType" />
+            <End Role="UserDonation" EntitySet="UserDonation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDonation_NGO" Association="Self.FK_UserDonation_NGO">
+            <End Role="NGO" EntitySet="NGO" />
+            <End Role="UserDonation" EntitySet="UserDonation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDonation_User" Association="Self.FK_UserDonation_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserDonation" EntitySet="UserDonation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDonation_User1" Association="Self.FK_UserDonation_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserDonation" EntitySet="UserDonation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDonation_User2" Association="Self.FK_UserDonation_User2">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserDonation" EntitySet="UserDonation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_Role" Association="Self.FK_UserRole_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_User" Association="Self.FK_UserRole_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_User1" Association="Self.FK_UserRole_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_User2" Association="Self.FK_UserRole_User2">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="projectNGOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="AddressTypeId" />
+          </Key>
+          <Property Name="AddressTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressType1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdateeBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_AddressType_User" FromRole="AddressType" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_AddressType_User1" FromRole="AddressType" ToRole="User" />
+          <NavigationProperty Name="NGOAddresses" Relationship="Self.FK_NGOAddress_AddressType" FromRole="AddressType" ToRole="NGOAddress" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="State" Relationship="Self.FK_City_State" FromRole="City" ToRole="State" />
+          <NavigationProperty Name="User" Relationship="Self.FK_City_User" FromRole="City" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_City_User1" FromRole="City" ToRole="User" />
+          <NavigationProperty Name="User2" Relationship="Self.FK_City_User2" FromRole="City" ToRole="User" />
+          <NavigationProperty Name="NGOAddresses" Relationship="Self.FK_NGOAddress_City" FromRole="City" ToRole="NGOAddress" />
+          <NavigationProperty Name="UserDetails" Relationship="Self.FK_UserDetails_City" FromRole="City" ToRole="UserDetails" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Country_User" FromRole="Country" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Country_User1" FromRole="Country" ToRole="User" />
+          <NavigationProperty Name="States" Relationship="Self.FK_State_Country" FromRole="Country" ToRole="State" />
+        </EntityType>
+        <EntityType Name="DonationType">
+          <Key>
+            <PropertyRef Name="DonationTypeId" />
+          </Key>
+          <Property Name="DonationTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_DonationType_User" FromRole="DonationType" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_DonationType_User1" FromRole="DonationType" ToRole="User" />
+          <NavigationProperty Name="NGODonationAcceptances" Relationship="Self.FK_NGODonationAcceptance_DonationType" FromRole="DonationType" ToRole="NGODonationAcceptance" />
+          <NavigationProperty Name="UserDonations" Relationship="Self.FK_UserDonation_DonationType" FromRole="DonationType" ToRole="UserDonation" />
+        </EntityType>
+        <EntityType Name="NGO">
+          <Key>
+            <PropertyRef Name="NGOId" />
+          </Key>
+          <Property Name="NGOId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NGOName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_NGO_User" FromRole="NGO" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_NGO_User1" FromRole="NGO" ToRole="User" />
+          <NavigationProperty Name="NGOAddresses" Relationship="Self.FK_NGOAddress_NGO" FromRole="NGO" ToRole="NGOAddress" />
+          <NavigationProperty Name="NGODonationAcceptances" Relationship="Self.FK_NGODonationAcceptance_NGO" FromRole="NGO" ToRole="NGODonationAcceptance" />
+          <NavigationProperty Name="NGOOperations" Relationship="Self.FK_NGOOperations_NGO" FromRole="NGO" ToRole="NGOOperations" />
+          <NavigationProperty Name="UserDonations" Relationship="Self.FK_UserDonation_NGO" FromRole="NGO" ToRole="UserDonation" />
+        </EntityType>
+        <EntityType Name="NGOAddress">
+          <Key>
+            <PropertyRef Name="NGOAddressId" />
+          </Key>
+          <Property Name="NGOAddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NGOId" Type="Int32" />
+          <Property Name="AddressTypeId" Type="Int32" />
+          <Property Name="Address1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="Contact" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AddressType" Relationship="Self.FK_NGOAddress_AddressType" FromRole="NGOAddress" ToRole="AddressType" />
+          <NavigationProperty Name="City" Relationship="Self.FK_NGOAddress_City" FromRole="NGOAddress" ToRole="City" />
+          <NavigationProperty Name="NGO" Relationship="Self.FK_NGOAddress_NGO" FromRole="NGOAddress" ToRole="NGO" />
+          <NavigationProperty Name="User" Relationship="Self.FK_NGOAddress_User" FromRole="NGOAddress" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_NGOAddress_User1" FromRole="NGOAddress" ToRole="User" />
+        </EntityType>
+        <EntityType Name="NGODonationAcceptance">
+          <Key>
+            <PropertyRef Name="NGODonationAcceptanceId" />
+          </Key>
+          <Property Name="NGODonationAcceptanceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NGOId" Type="Int32" />
+          <Property Name="DatonationTypeId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DonationType" Relationship="Self.FK_NGODonationAcceptance_DonationType" FromRole="NGODonationAcceptance" ToRole="DonationType" />
+          <NavigationProperty Name="NGO" Relationship="Self.FK_NGODonationAcceptance_NGO" FromRole="NGODonationAcceptance" ToRole="NGO" />
+          <NavigationProperty Name="User" Relationship="Self.FK_NGODonationAcceptance_User" FromRole="NGODonationAcceptance" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_NGODonationAcceptance_User1" FromRole="NGODonationAcceptance" ToRole="User" />
+        </EntityType>
+        <EntityType Name="NGOOperationalType">
+          <Key>
+            <PropertyRef Name="NGOOperationalTypeId" />
+          </Key>
+          <Property Name="NGOOperationalTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OperationType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_NGOOperationalType_User" FromRole="NGOOperationalType" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_NGOOperationalType_User1" FromRole="NGOOperationalType" ToRole="User" />
+          <NavigationProperty Name="NGOOperations" Relationship="Self.FK_NGOOperations_NGOOperationalType" FromRole="NGOOperationalType" ToRole="NGOOperations" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Role_User" FromRole="Role" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Role_User1" FromRole="Role" ToRole="User" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRole_Role" FromRole="Role" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountyId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_City_State" FromRole="State" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_State_Country" FromRole="State" ToRole="Country" />
+          <NavigationProperty Name="User" Relationship="Self.FK_State_User" FromRole="State" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_State_User1" FromRole="State" ToRole="User" />
+          <NavigationProperty Name="UserDetails" Relationship="Self.FK_UserDetails_State" FromRole="State" ToRole="UserDetails" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Gender" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AddressTypes" Relationship="Self.FK_AddressType_User" FromRole="User" ToRole="AddressType" />
+          <NavigationProperty Name="AddressTypes1" Relationship="Self.FK_AddressType_User1" FromRole="User" ToRole="AddressType" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_City_User" FromRole="User" ToRole="City" />
+          <NavigationProperty Name="Cities1" Relationship="Self.FK_City_User1" FromRole="User" ToRole="City" />
+          <NavigationProperty Name="Cities2" Relationship="Self.FK_City_User2" FromRole="User" ToRole="City" />
+          <NavigationProperty Name="Countries" Relationship="Self.FK_Country_User" FromRole="User" ToRole="Country" />
+          <NavigationProperty Name="Countries1" Relationship="Self.FK_Country_User1" FromRole="User" ToRole="Country" />
+          <NavigationProperty Name="DonationTypes" Relationship="Self.FK_DonationType_User" FromRole="User" ToRole="DonationType" />
+          <NavigationProperty Name="DonationTypes1" Relationship="Self.FK_DonationType_User1" FromRole="User" ToRole="DonationType" />
+          <NavigationProperty Name="NGOes" Relationship="Self.FK_NGO_User" FromRole="User" ToRole="NGO" />
+          <NavigationProperty Name="NGOes1" Relationship="Self.FK_NGO_User1" FromRole="User" ToRole="NGO" />
+          <NavigationProperty Name="NGOAddresses" Relationship="Self.FK_NGOAddress_User" FromRole="User" ToRole="NGOAddress" />
+          <NavigationProperty Name="NGOAddresses1" Relationship="Self.FK_NGOAddress_User1" FromRole="User" ToRole="NGOAddress" />
+          <NavigationProperty Name="NGODonationAcceptances" Relationship="Self.FK_NGODonationAcceptance_User" FromRole="User" ToRole="NGODonationAcceptance" />
+          <NavigationProperty Name="NGODonationAcceptances1" Relationship="Self.FK_NGODonationAcceptance_User1" FromRole="User" ToRole="NGODonationAcceptance" />
+          <NavigationProperty Name="NGOOperationalTypes" Relationship="Self.FK_NGOOperationalType_User" FromRole="User" ToRole="NGOOperationalType" />
+          <NavigationProperty Name="NGOOperationalTypes1" Relationship="Self.FK_NGOOperationalType_User1" FromRole="User" ToRole="NGOOperationalType" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Role_User" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Roles1" Relationship="Self.FK_Role_User1" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="States" Relationship="Self.FK_State_User" FromRole="User" ToRole="State" />
+          <NavigationProperty Name="States1" Relationship="Self.FK_State_User1" FromRole="User" ToRole="State" />
+          <NavigationProperty Name="NGOOperations" Relationship="Self.FK_NGOOperations_User" FromRole="User" ToRole="NGOOperations" />
+          <NavigationProperty Name="NGOOperations1" Relationship="Self.FK_NGOOperations_User1" FromRole="User" ToRole="NGOOperations" />
+          <NavigationProperty Name="UserDetails" Relationship="Self.FK_UserDetails_User" FromRole="User" ToRole="UserDetails" />
+          <NavigationProperty Name="UserDetails1" Relationship="Self.FK_UserDetails_User1" FromRole="User" ToRole="UserDetails" />
+          <NavigationProperty Name="UserDetails2" Relationship="Self.FK_UserDetails_User2" FromRole="User" ToRole="UserDetails" />
+          <NavigationProperty Name="UserDetails3" Relationship="Self.FK_UserDetails_User3" FromRole="User" ToRole="UserDetails" />
+          <NavigationProperty Name="UserDonations" Relationship="Self.FK_UserDonation_User" FromRole="User" ToRole="UserDonation" />
+          <NavigationProperty Name="UserDonations1" Relationship="Self.FK_UserDonation_User1" FromRole="User" ToRole="UserDonation" />
+          <NavigationProperty Name="UserDonations2" Relationship="Self.FK_UserDonation_User2" FromRole="User" ToRole="UserDonation" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRole_User" FromRole="User" ToRole="UserRole" />
+          <NavigationProperty Name="UserRoles1" Relationship="Self.FK_UserRole_User1" FromRole="User" ToRole="UserRole" />
+          <NavigationProperty Name="UserRoles2" Relationship="Self.FK_UserRole_User2" FromRole="User" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="UserDetailsId" />
+          </Key>
+          <Property Name="UserDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Address1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="City" Relationship="Self.FK_UserDetails_City" FromRole="UserDetails" ToRole="City" />
+          <NavigationProperty Name="State" Relationship="Self.FK_UserDetails_State" FromRole="UserDetails" ToRole="State" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserDetails_User" FromRole="UserDetails" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_UserDetails_User1" FromRole="UserDetails" ToRole="User" />
+          <NavigationProperty Name="User2" Relationship="Self.FK_UserDetails_User2" FromRole="UserDetails" ToRole="User" />
+          <NavigationProperty Name="User3" Relationship="Self.FK_UserDetails_User3" FromRole="UserDetails" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserDonation">
+          <Key>
+            <PropertyRef Name="UserDonationId" />
+          </Key>
+          <Property Name="UserDonationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="NGOId" Type="Int32" />
+          <Property Name="DonationTypeId" Type="Int32" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="DateOfDonation" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DonationType" Relationship="Self.FK_UserDonation_DonationType" FromRole="UserDonation" ToRole="DonationType" />
+          <NavigationProperty Name="NGO" Relationship="Self.FK_UserDonation_NGO" FromRole="UserDonation" ToRole="NGO" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserDonation_User" FromRole="UserDonation" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_UserDonation_User1" FromRole="UserDonation" ToRole="User" />
+          <NavigationProperty Name="User2" Relationship="Self.FK_UserDonation_User2" FromRole="UserDonation" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_UserRole_Role" FromRole="UserRole" ToRole="Role" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserRole_User" FromRole="UserRole" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_UserRole_User1" FromRole="UserRole" ToRole="User" />
+          <NavigationProperty Name="User2" Relationship="Self.FK_UserRole_User2" FromRole="UserRole" ToRole="User" />
+        </EntityType>
+        <EntityType Name="NGOOperation">
+          <Key>
+            <PropertyRef Name="NGOOperationsId" />
+          </Key>
+          <Property Name="NGOOperationsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NGOId" Type="Int32" />
+          <Property Name="NGOOperationalId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="NGO" Relationship="Self.FK_NGOOperations_NGO" FromRole="NGOOperations" ToRole="NGO" />
+          <NavigationProperty Name="NGOOperationalType" Relationship="Self.FK_NGOOperations_NGOOperationalType" FromRole="NGOOperations" ToRole="NGOOperationalType" />
+          <NavigationProperty Name="User" Relationship="Self.FK_NGOOperations_User" FromRole="NGOOperations" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_NGOOperations_User1" FromRole="NGOOperations" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_AddressType_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="AddressType">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AddressType_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="AddressType">
+              <PropertyRef Name="UpdateeBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOAddress_AddressType">
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="0..1" />
+          <End Role="NGOAddress" Type="Self.NGOAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressType">
+              <PropertyRef Name="AddressTypeId" />
+            </Principal>
+            <Dependent Role="NGOAddress">
+              <PropertyRef Name="AddressTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_User2">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOAddress_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="NGOAddress" Type="Self.NGOAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="NGOAddress">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="UserDetails" Type="Self.UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Country" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Country">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Country" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Country">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CountyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DonationType_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="DonationType" Type="Self.DonationType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="DonationType">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DonationType_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="DonationType" Type="Self.DonationType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="DonationType">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGODonationAcceptance_DonationType">
+          <End Role="DonationType" Type="Self.DonationType" Multiplicity="0..1" />
+          <End Role="NGODonationAcceptance" Type="Self.NGODonationAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonationType">
+              <PropertyRef Name="DonationTypeId" />
+            </Principal>
+            <Dependent Role="NGODonationAcceptance">
+              <PropertyRef Name="DatonationTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDonation_DonationType">
+          <End Role="DonationType" Type="Self.DonationType" Multiplicity="0..1" />
+          <End Role="UserDonation" Type="Self.UserDonation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DonationType">
+              <PropertyRef Name="DonationTypeId" />
+            </Principal>
+            <Dependent Role="UserDonation">
+              <PropertyRef Name="DonationTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGO_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGO" Type="Self.NGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGO">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGO_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGO" Type="Self.NGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGO">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOAddress_NGO">
+          <End Role="NGO" Type="Self.NGO" Multiplicity="0..1" />
+          <End Role="NGOAddress" Type="Self.NGOAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGO">
+              <PropertyRef Name="NGOId" />
+            </Principal>
+            <Dependent Role="NGOAddress">
+              <PropertyRef Name="NGOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGODonationAcceptance_NGO">
+          <End Role="NGO" Type="Self.NGO" Multiplicity="0..1" />
+          <End Role="NGODonationAcceptance" Type="Self.NGODonationAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGO">
+              <PropertyRef Name="NGOId" />
+            </Principal>
+            <Dependent Role="NGODonationAcceptance">
+              <PropertyRef Name="NGOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOOperations_NGO">
+          <End Role="NGO" Type="Self.NGO" Multiplicity="0..1" />
+          <End Role="NGOOperations" Type="Self.NGOOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGO">
+              <PropertyRef Name="NGOId" />
+            </Principal>
+            <Dependent Role="NGOOperations">
+              <PropertyRef Name="NGOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDonation_NGO">
+          <End Role="NGO" Type="Self.NGO" Multiplicity="0..1" />
+          <End Role="UserDonation" Type="Self.UserDonation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGO">
+              <PropertyRef Name="NGOId" />
+            </Principal>
+            <Dependent Role="UserDonation">
+              <PropertyRef Name="NGOId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOAddress_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGOAddress" Type="Self.NGOAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGOAddress">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOAddress_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGOAddress" Type="Self.NGOAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGOAddress">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGODonationAcceptance_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGODonationAcceptance" Type="Self.NGODonationAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGODonationAcceptance">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGODonationAcceptance_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGODonationAcceptance" Type="Self.NGODonationAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGODonationAcceptance">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOOperationalType_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGOOperationalType" Type="Self.NGOOperationalType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGOOperationalType">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOOperationalType_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGOOperationalType" Type="Self.NGOOperationalType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGOOperationalType">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOOperations_NGOOperationalType">
+          <End Role="NGOOperationalType" Type="Self.NGOOperationalType" Multiplicity="0..1" />
+          <End Role="NGOOperations" Type="Self.NGOOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGOOperationalType">
+              <PropertyRef Name="NGOOperationalTypeId" />
+            </Principal>
+            <Dependent Role="NGOOperations">
+              <PropertyRef Name="NGOOperationalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Role">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="UserDetails" Type="Self.UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOOperations_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGOOperations" Type="Self.NGOOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGOOperations">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NGOOperations_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="NGOOperations" Type="Self.NGOOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NGOOperations">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserDetails" Type="Self.UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserDetails" Type="Self.UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_User2">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserDetails" Type="Self.UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_User3">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserDetails" Type="Self.UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDonation_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserDonation" Type="Self.UserDonation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDonation">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDonation_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserDonation" Type="Self.UserDonation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDonation">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDonation_User2">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserDonation" Type="Self.UserDonation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDonation">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_User2">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="projectNGOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AddressTypes" EntityType="Self.AddressType" />
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="DonationTypes" EntityType="Self.DonationType" />
+          <EntitySet Name="NGOes" EntityType="Self.NGO" />
+          <EntitySet Name="NGOAddresses" EntityType="Self.NGOAddress" />
+          <EntitySet Name="NGODonationAcceptances" EntityType="Self.NGODonationAcceptance" />
+          <EntitySet Name="NGOOperationalTypes" EntityType="Self.NGOOperationalType" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="States" EntityType="Self.State" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetail" />
+          <EntitySet Name="UserDonations" EntityType="Self.UserDonation" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="NGOOperations" EntityType="Self.NGOOperation" />
+          <AssociationSet Name="FK_AddressType_User" Association="Self.FK_AddressType_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="AddressType" EntitySet="AddressTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AddressType_User1" Association="Self.FK_AddressType_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="AddressType" EntitySet="AddressTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOAddress_AddressType" Association="Self.FK_NGOAddress_AddressType">
+            <End Role="AddressType" EntitySet="AddressTypes" />
+            <End Role="NGOAddress" EntitySet="NGOAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_User" Association="Self.FK_City_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_User1" Association="Self.FK_City_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_User2" Association="Self.FK_City_User2">
+            <End Role="User" EntitySet="Users" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOAddress_City" Association="Self.FK_NGOAddress_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="NGOAddress" EntitySet="NGOAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_City" Association="Self.FK_UserDetails_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country_User" Association="Self.FK_Country_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Country" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country_User1" Association="Self.FK_Country_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Country" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_Country" Association="Self.FK_State_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="State" EntitySet="States" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DonationType_User" Association="Self.FK_DonationType_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="DonationType" EntitySet="DonationTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DonationType_User1" Association="Self.FK_DonationType_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="DonationType" EntitySet="DonationTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGODonationAcceptance_DonationType" Association="Self.FK_NGODonationAcceptance_DonationType">
+            <End Role="DonationType" EntitySet="DonationTypes" />
+            <End Role="NGODonationAcceptance" EntitySet="NGODonationAcceptances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDonation_DonationType" Association="Self.FK_UserDonation_DonationType">
+            <End Role="DonationType" EntitySet="DonationTypes" />
+            <End Role="UserDonation" EntitySet="UserDonations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGO_User" Association="Self.FK_NGO_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NGO" EntitySet="NGOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGO_User1" Association="Self.FK_NGO_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NGO" EntitySet="NGOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOAddress_NGO" Association="Self.FK_NGOAddress_NGO">
+            <End Role="NGO" EntitySet="NGOes" />
+            <End Role="NGOAddress" EntitySet="NGOAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGODonationAcceptance_NGO" Association="Self.FK_NGODonationAcceptance_NGO">
+            <End Role="NGO" EntitySet="NGOes" />
+            <End Role="NGODonationAcceptance" EntitySet="NGODonationAcceptances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOOperations_NGO" Association="Self.FK_NGOOperations_NGO">
+            <End Role="NGO" EntitySet="NGOes" />
+            <End Role="NGOOperations" EntitySet="NGOOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDonation_NGO" Association="Self.FK_UserDonation_NGO">
+            <End Role="NGO" EntitySet="NGOes" />
+            <End Role="UserDonation" EntitySet="UserDonations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOAddress_User" Association="Self.FK_NGOAddress_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NGOAddress" EntitySet="NGOAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOAddress_User1" Association="Self.FK_NGOAddress_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NGOAddress" EntitySet="NGOAddresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGODonationAcceptance_User" Association="Self.FK_NGODonationAcceptance_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NGODonationAcceptance" EntitySet="NGODonationAcceptances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGODonationAcceptance_User1" Association="Self.FK_NGODonationAcceptance_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NGODonationAcceptance" EntitySet="NGODonationAcceptances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOOperationalType_User" Association="Self.FK_NGOOperationalType_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NGOOperationalType" EntitySet="NGOOperationalTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOOperationalType_User1" Association="Self.FK_NGOOperationalType_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NGOOperationalType" EntitySet="NGOOperationalTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOOperations_NGOOperationalType" Association="Self.FK_NGOOperations_NGOOperationalType">
+            <End Role="NGOOperationalType" EntitySet="NGOOperationalTypes" />
+            <End Role="NGOOperations" EntitySet="NGOOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_User" Association="Self.FK_Role_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_User1" Association="Self.FK_Role_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_Role" Association="Self.FK_UserRole_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_User" Association="Self.FK_State_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="State" EntitySet="States" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_User1" Association="Self.FK_State_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="State" EntitySet="States" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_State" Association="Self.FK_UserDetails_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOOperations_User" Association="Self.FK_NGOOperations_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NGOOperations" EntitySet="NGOOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NGOOperations_User1" Association="Self.FK_NGOOperations_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NGOOperations" EntitySet="NGOOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_User" Association="Self.FK_UserDetails_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_User1" Association="Self.FK_UserDetails_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_User2" Association="Self.FK_UserDetails_User2">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_User3" Association="Self.FK_UserDetails_User3">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDonation_User" Association="Self.FK_UserDonation_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserDonation" EntitySet="UserDonations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDonation_User1" Association="Self.FK_UserDonation_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserDonation" EntitySet="UserDonations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDonation_User2" Association="Self.FK_UserDonation_User2">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserDonation" EntitySet="UserDonations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_User" Association="Self.FK_UserRole_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_User1" Association="Self.FK_UserRole_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_User2" Association="Self.FK_UserRole_User2">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="projectNGOModelStoreContainer" CdmEntityContainer="projectNGOEntities">
+          <EntitySetMapping Name="AddressTypes">
+            <EntityTypeMapping TypeName="projectNGOModel.AddressType">
+              <MappingFragment StoreEntitySet="AddressType">
+                <ScalarProperty Name="AddressTypeId" ColumnName="AddressTypeId" />
+                <ScalarProperty Name="AddressType1" ColumnName="AddressType" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdateeBy" ColumnName="UpdateeBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="projectNGOModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="projectNGOModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DonationTypes">
+            <EntityTypeMapping TypeName="projectNGOModel.DonationType">
+              <MappingFragment StoreEntitySet="DonationType">
+                <ScalarProperty Name="DonationTypeId" ColumnName="DonationTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NGOes">
+            <EntityTypeMapping TypeName="projectNGOModel.NGO">
+              <MappingFragment StoreEntitySet="NGO">
+                <ScalarProperty Name="NGOId" ColumnName="NGOId" />
+                <ScalarProperty Name="NGOName" ColumnName="NGOName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NGOAddresses">
+            <EntityTypeMapping TypeName="projectNGOModel.NGOAddress">
+              <MappingFragment StoreEntitySet="NGOAddress">
+                <ScalarProperty Name="NGOAddressId" ColumnName="NGOAddressId" />
+                <ScalarProperty Name="NGOId" ColumnName="NGOId" />
+                <ScalarProperty Name="AddressTypeId" ColumnName="AddressTypeId" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NGODonationAcceptances">
+            <EntityTypeMapping TypeName="projectNGOModel.NGODonationAcceptance">
+              <MappingFragment StoreEntitySet="NGODonationAcceptance">
+                <ScalarProperty Name="NGODonationAcceptanceId" ColumnName="NGODonationAcceptanceId" />
+                <ScalarProperty Name="NGOId" ColumnName="NGOId" />
+                <ScalarProperty Name="DatonationTypeId" ColumnName="DatonationTypeId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NGOOperationalTypes">
+            <EntityTypeMapping TypeName="projectNGOModel.NGOOperationalType">
+              <MappingFragment StoreEntitySet="NGOOperationalType">
+                <ScalarProperty Name="NGOOperationalTypeId" ColumnName="NGOOperationalTypeId" />
+                <ScalarProperty Name="OperationType" ColumnName="OperationType" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="projectNGOModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="projectNGOModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountyId" ColumnName="CountyId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="projectNGOModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="projectNGOModel.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetails">
+                <ScalarProperty Name="UserDetailsId" ColumnName="UserDetailsId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDonations">
+            <EntityTypeMapping TypeName="projectNGOModel.UserDonation">
+              <MappingFragment StoreEntitySet="UserDonation">
+                <ScalarProperty Name="UserDonationId" ColumnName="UserDonationId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="NGOId" ColumnName="NGOId" />
+                <ScalarProperty Name="DonationTypeId" ColumnName="DonationTypeId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="DateOfDonation" ColumnName="DateOfDonation" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="projectNGOModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NGOOperations">
+            <EntityTypeMapping TypeName="projectNGOModel.NGOOperation">
+              <MappingFragment StoreEntitySet="NGOOperations">
+                <ScalarProperty Name="NGOOperationsId" ColumnName="NGOOperationsId" />
+                <ScalarProperty Name="NGOId" ColumnName="NGOId" />
+                <ScalarProperty Name="NGOOperationalId" ColumnName="NGOOperationalId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

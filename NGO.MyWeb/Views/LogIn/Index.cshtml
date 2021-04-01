@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Shared/_LogInMasterLayoutPage.cshtml";
+}
+
+    <div class="wrapper">
+        <div class="container">
+            <h1>Welcome</h1>
+
+            <form class="form">
+                <input type="text" placeholder="Username"id="txtUserName">
+                <input type="password" placeholder="Password"id="txtPassword">
+                <button type="submit" id="loginButton">Login</button>
+            </form>
+        </div>
+
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+
+
+
+
+
+<script>
+
+    $("#login-button").click(function (event) {
+        event.preventDefault();
+
+        $('form').fadeOut(500);
+        $('.wrapper').addClass('form-success');
+    });
+
+
+
+    $(document).ready(function () {
+
+        $("#login-button").click(function () {
+            var postData =
+            {
+                "UserName": $("#txtUserName").val(),
+                "Password": $("#txtPassword").val()
+            };
+
+
+            console.log(postData);
+            console.log(JSON.stringify(postData));
+            $.ajax({
+                type: "POST",
+                url: Saswatee + 'api/User/Validate',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(postData),
+                dataType: "json",
+                success: function (msg) {
+
+                    if (msg == null) {
+                        window.location.href = "/Login/Failure";
+
+                    }
+                    else {
+                        window.location.href = "/Login/Success";
+                    }
+                },
+                error: function (req, status, error) {
+                    alert("Error try again");
+                }
+            });
+
+        });
+    });
+</script>
